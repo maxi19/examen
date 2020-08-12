@@ -11,6 +11,8 @@ import com.examen.logica.Operaciones;
 public class Test {
 
 	public static void main(String[] args) {
+		try {
+			
 		Codigo c1 = new Codigo("DCR-88578-9");
 		Codigo c2 = new Codigo("PCR-88578-9");
 		Codigo c3 = new Codigo("ECR-88578-9");
@@ -49,23 +51,30 @@ public class Test {
 		
 		//hacemos la union
 		List<Codigo> lista2 = new ArrayList<Codigo>();
-		Codigo c6 = new Codigo("DCR-88578-9");
-		Codigo c7 = new Codigo("PCR-88578-9");
-		Codigo c8 = new Codigo("ECR-88578-9");
-		Codigo c9 = new Codigo("ECR-88578-7");
-		Codigo c10 = new Codigo("ECR-88578-3");
-		lista2.add(c6);
-		lista2.add(c7);
-		lista2.add(c8);
-		lista2.add(c9);
-		lista2.add(c10);
+		Codigo c6;
+
+			c6 = new Codigo("DCR-88578-9");
+			Codigo c7 = new Codigo("PCR-88578-9");
+			Codigo c8 = new Codigo("ECR-88578-9");
+			Codigo c9 = new Codigo("ECR-88578-7");
+			Codigo c10 = new Codigo("ECR-88578-3");
+			lista2.add(c6);
 		
-		op.union(lista1, lista2);
-		
-		//hacemos la interseccion 
-		
-		op.interseccion(lista1, lista2);
-		
+			lista2.add(c7);
+			lista2.add(c8);
+			lista2.add(c9);
+			lista2.add(c10);
+			
+			op.union(lista1, lista2);
+			
+			//hacemos la interseccion 
+			
+			op.interseccion(lista1, lista2);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

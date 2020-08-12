@@ -19,7 +19,7 @@ public class Codigo implements Comparable<Codigo> {
 	private String PATRON ="([A-Z]{3})-(\\d{5})-(\\d{1})" ;
 	
 	
-	public Codigo(String codigo) {
+	public Codigo(String codigo) throws Exception {
 		codigo = codigo.trim();
 		codigo = codigo.replace(" ", "");
 		if (codigo.length() != 11 ) {
@@ -29,13 +29,15 @@ public class Codigo implements Comparable<Codigo> {
 	
 	}
 	
-	private void separarCodigo(String codigo) {
+	private void separarCodigo(String codigo) throws Exception {
 		this.codigoPattern = codigoPattern.compile(this.PATRON);
 		codigoMatcher = codigoPattern.matcher(codigo);
 		if (codigoMatcher.find()) {
 			this.codigoProducto = codigoMatcher.group(1);
 			this.regionGeografica = codigoMatcher.group(2);
 			this.digitoVerificador = Integer.parseInt(codigoMatcher.group(3));
+		}else {
+			throw new Exception("El codigo no tiene el formato adecuado");
 		}
 	}
 		

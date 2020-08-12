@@ -13,57 +13,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.consultorio.comun.CodigoDto;
 import com.consultorio.comun.Constantes;
+import com.consultorio.excepciones.Respuesta;
+import com.examen.logica.Codigo;
+import com.examen.logica.Operaciones;
 
 
 @RestController
-@RequestMapping(Constantes.PATH_ESPECIALISTA)
-@CrossOrigin (origins=Constantes.URL_FRONT_END, methods = {RequestMethod.GET, RequestMethod.POST} )
+@RequestMapping("test")
 
 public class EspecialistaController {
 
-	private static final Logger log = LoggerFactory.getLogger(EspecialistaController.class);
 	
-/*
-	@Autowired
-	private EspecialistaService especialistaService;
-	
-	
-    @RequestMapping( value= Constantes.URL_CREAR_ESPECIALISTAS ,  method = RequestMethod.POST)
-    public Respuesta<EspecialistaDto> agregarEspecialista(@RequestBody EspecialistaDto especialistaDto) {
-    	Respuesta<EspecialistaDto> respuesta = especialistaService.agregarEspecialista(especialistaDto);
-    	if (TipoRespuestaEnum.OK.equals(respuesta.getEstadoRespuesta())) {
-    		ItemMensaje item = new ItemMensaje();
-    		item.setMensaje("se cargo el especialista");
-    		item.setTipoErrorEnum(TipoErrorEnum.OPERACION_EXITOSA);
-    		respuesta.setItemMensaje(item);
+    @RequestMapping( value= "/verificar" ,  method = RequestMethod.GET)
+    public Respuesta  verificarcion(@RequestBody CodigoDto codigoDto) {
+    	Respuesta respuesta = new Respuesta();
+    	try {
+    		Operaciones operaciones = new Operaciones();
+    		Codigo codigo = new Codigo(codigoDto.getCodigo());
+    		
+    		respuesta.setCodigo(codigo);
+    		if (operaciones.verificar(codigo)) {
+    			respuesta.setMensaje("El codigo verificador es correcto");
+    		}
+    		respuesta.setMensaje("El codigo verificador es incorrecto");
     		return respuesta;
-	} else if(TipoRespuestaEnum.WARNING.equals(respuesta.getEstadoRespuesta())) {
-		//TERMIANR
-	} else if (TipoRespuestaEnum.ERROR.equals(respuesta.getEstadoRespuesta())) {
-		//TERMINAR
-	}
-       return respuesta;
-    }
-    
-    
-
-    
-    @GetMapping(Constantes.URL_MODIFICAR_ESPECIALISTA)
-    public Respuesta<EspecialistaDto> modificarEspecialista(@RequestBody EspecialistaDto especialistaDto) {
-    	Respuesta<EspecialistaDto> respuesta = especialistaService.modificarEspecialista(especialistaDto);
-	    if (TipoRespuestaEnum.OK.equals(respuesta.getEstadoRespuesta())) {
-				return respuesta;
-		} else if(TipoRespuestaEnum.WARNING.equals(respuesta.getEstadoRespuesta())) {
-			//TERMIANR
-		} else if (TipoRespuestaEnum.ERROR.equals(respuesta.getEstadoRespuesta())) {
-			//TERMINAR
+		} catch (Exception e) {
+			respuesta.setMensaje("El codigo no responde al formato solicitado");  
 		}
     	return respuesta;
     }
     
     
-    */
 
+    
     
 }
