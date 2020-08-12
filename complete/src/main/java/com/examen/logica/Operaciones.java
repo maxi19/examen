@@ -45,7 +45,7 @@ public class Operaciones {
 			System.out.println("el digito verificador del codigo :"+ codigo + " es correcto");
 			return true;
 		}
-		System.out.println("el digito verificador del codigo :"+ codigo + " no es correcto");
+		System.out.println("el digito verificador del codigo :"+ codigo + " no es incorrecto");
 		return false;
 		
 	}

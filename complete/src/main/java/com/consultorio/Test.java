@@ -11,6 +11,11 @@ import com.examen.logica.Operaciones;
 public class Test {
 
 	public static void main(String[] args) {
+		
+		//ENPOINT A DONDE APUNTAR PARA PROBAR EL REST
+		//http://localhost:8080/test/verificar
+		
+		
 		try {
 			
 		Codigo c1 = new Codigo("DCR-88578-9");

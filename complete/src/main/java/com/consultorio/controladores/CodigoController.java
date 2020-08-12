@@ -23,7 +23,7 @@ import com.examen.logica.Operaciones;
 @RestController
 @RequestMapping("test")
 
-public class EspecialistaController {
+public class CodigoController {
 
 	
     @RequestMapping( value= "/verificar" ,  method = RequestMethod.GET)
@@ -36,6 +36,7 @@ public class EspecialistaController {
     		respuesta.setCodigo(codigo);
     		if (operaciones.verificar(codigo)) {
     			respuesta.setMensaje("El codigo verificador es correcto");
+    			return respuesta;
     		}
     		respuesta.setMensaje("El codigo verificador es incorrecto");
     		return respuesta;
