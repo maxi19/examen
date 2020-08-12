@@ -13,10 +13,10 @@ public class Operaciones {
 			codigo.setCodigoProducto(codigo.getCodigoProducto().toUpperCase());
 			
 			if (codigo.getCodigoProducto().startsWith("P") || codigo.getCodigoProducto().startsWith("W") ) {
-				System.out.println("es prioritario");
+				System.out.println("el codigo :"+ codigo + " es prioritario");
 				return true;
 			}
-			System.out.println("no es prioritario");
+			System.out.println("el codigo :"+ codigo + " no es prioritario");
 			return false;
 		}
 		
@@ -42,8 +42,10 @@ public class Operaciones {
 		} while (sigoSumando);
 		
 		if (codigo.getDigitoVerificador() ==  suma) {
+			System.out.println("el digito verificador del codigo :"+ codigo + " es correcto");
 			return true;
 		}
+		System.out.println("el digito verificador del codigo :"+ codigo + " no es correcto");
 		return false;
 		
 	}
